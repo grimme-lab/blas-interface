@@ -1,0 +1,3 @@
+name = "blas-interface"
+license = "Apache-2.0"
+build.link = "blas"
