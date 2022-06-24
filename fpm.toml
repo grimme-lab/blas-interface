@@ -1,3 +1,7 @@
 name = "blas-interface"
+version = "1.0.0"
 license = "Apache-2.0"
-build.link = "blas"
+author = ["Sebastian Ehlert"]
+maintainer = ["@awvwgk"]
+copyright = "Copyright 2022 Sebastian Ehlert"
+build.link = ["blas"]

@@ -3,18 +3,91 @@
 Interfaces to basic linear algebra subprograms.
 
 
-## Usage
+## Building from source
 
-This project supports the Fortran package manager ([fpm](https://github.com/fortran-lang/fpm)) as build system.
-To use this interfaces in your project add `blas-interface` as dependency to your package manifest.
+To build this project from the source code in this repository you need to have
+
+- a Fortran compiler supporting Fortran 2008
+
+  - GFortran 8 or newer
+  - Intel Fortran 18 or newer
+
+- One of the supported build systems
+
+  - [meson](https://mesonbuild.com) version 0.55 or newer
+  - [CMake](https://cmake.org/) version 3.9 or newer
+  - [Fortran package manager (fpm)](https://github.com/fortran-lang/fpm) version 0.2.0 or newer
+
+Get the source by cloning the repository
+
+```
+git clone https://github.com/grimme-lab/blas-interface
+cd blas-interface
+```
+
+### Building with meson
+
+To build this project with meson a build-system backend is required, *i.e.* [ninja](https://ninja-build.org) version 1.7 or newer.
+Setup a build with
+
+```
+meson setup _build --prefix=/path/to/install
+```
+
+You can select the Fortran compiler by the `FC` environment variable.
+To compile the project run
+
+```
+meson compile -C _build
+```
+
+Finally, you can install TOML Fortran using
+
+```
+meson install -C _build
+```
+
+
+
+### Building with CMake
+
+While meson is the preferred way to build this project it also offers CMake support.
+Configure the CMake build with
+
+```
+cmake -B _build -G Ninja -DCMAKE_INSTALL_PREFIX=/path/to/install
+```
+
+Similar to meson the compiler can be selected with the `FC` environment variable.
+You can build the project using
+
+```
+cmake --build _build
+```
+
+Finally, you can install TOML Fortran using
+
+```
+cmake --install _build
+```
+
+
+### Building with fpm
+
+The Fortran package manager ([fpm](https://github.com/fortran-lang/fpm)) supports the addition of this interface library as a dependency.
+In the package manifest, `fpm.toml`, you can add this project dependency via:
 
 ```toml
 [dependencies]
-blas-interface.git = "https://github.com/awvwgk/blas-interface"
+blas-interface.git = "https://github.com/grimme-lab/blas-interface"
 ```
 
-The `blas` module and the `blas_pure` module become importable.
-The latter declares all BLAS procedures with explicit intent to allow using them in a `pure` context, even if the procedures themselves are not declared as `pure`.
+Then build and test normally.
+
+```
+fpm build
+fpm test
+```
 
 
 ## License
