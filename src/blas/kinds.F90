@@ -21,7 +21,7 @@ module blas_kinds
   implicit none
 
   !> Single precision real numbers
-  integer, parameter :: sp = selected_real_kind(7)
+  integer, parameter :: sp = 4
 
   !> Double precision real numbers
   integer, parameter :: dp = selected_real_kind(16)
