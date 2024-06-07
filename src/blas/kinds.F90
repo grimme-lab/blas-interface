@@ -21,10 +21,10 @@ module blas_kinds
   implicit none
 
   !> Single precision real numbers
-  integer, parameter :: sp = selected_real_kind(7)
+  integer, parameter :: sp = selected_real_kind(6)
 
   !> Double precision real numbers
-  integer, parameter :: dp = selected_real_kind(16)
+  integer, parameter :: dp = selected_real_kind(15)
 
   !> Length of default integers
   integer, parameter :: i4 = selected_int_kind(9)
